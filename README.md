@@ -1,0 +1,2 @@
+# wumpi
+Wumpi Discord Bot
