@@ -1,23 +1,24 @@
-import discord 
+import discord
 import asyncio
 import time
-
+import random
 admins = []
 def admin(message):
     if message.author.id in admins:
         return True
     else:
         return False
-version = "0.1 Beta Flight"
-build = "02"
+version = "0.2 Beta Flight"
+build = "15"
 token = ''
 client = discord.Client()
 print("Getting ready. GET DAT WUMPI")
 def getUptime():
-    startTime = time.time()
+    global startTime
     """
     Returns the number of seconds since the program started.
     """
+
     upsec = round(time.time() - startTime)
     m, s = divmod(upsec, 60)
     h, m = divmod(m, 60)
@@ -25,11 +26,28 @@ def getUptime():
 @client.event
 async def on_ready():
     print("Running")
+    global startTime
+    startTime = time.time()
     await client.change_presence(game=discord.Game(name="github.com/nevexo kthx"))
 @client.event
 async def on_message(message):
+    if message.content.startswith("~duh"):
+        await client.send_message(message.channel, ":poop: - Asian confuseush. ")
+    if message.content.startswith("~die"):
+        if admin(message):
+            await client.send_message(message.channel, "kthxbye")
+            await client.logout()
+    if message.content.startswith("~help"):
+        await client.send_message(message.channel, "```simon says <message> - **Says what ever you placed in the place holder <message>**```")
     if message.tts:
-        await client.send_message(message.channel, ":poop: - Com'on. TTS really?")
+        print("Pooshush.")
+        if message.server.id == "220231489437040641":
+            alertID = random.randint(1, 13456765024576)
+            print(alertID)
+            await client.send_message(message.channel, ":poop: Don't use TTS. [Warning: " + str(alertID) + "]")
+            await client.send_message(discord.Object(id="233645463314759680"), "```Alert ID: " + str(alertID) + "\nAlerted user: @" + message.author.name + "\nWarning reason: Used TTS. Like pls. Kthx.```")
+        else:
+            await client.send_message(message.channel, ":poop: - Com'on. TTS really?")
     if message.content.startswith("simon says"):
         await client.send_message(message.channel, message.content[10:])
     if message.content.startswith("~dot"):
@@ -53,7 +71,7 @@ async def on_message(message):
             await client.send_message(message.channel, ":white_check_mark: - All done kthx")
         else:
             await client.send_message(message.channel, ":no_entry: - U got no perms. kthxbye")
-        
+
     if message.content.startswith("~servers"):
         if admin(message):
             servers = list(client.servers)
@@ -73,7 +91,7 @@ async def on_message(message):
                 await client.edit_message(temp, ":white_check_mark: Created invite for: " + message.content[11:] + ", valid for 5 minutes: " + str(invite))
             except:
                 await client.edit_message(temp, ":no_entry: Failed to create invite.")
-        
+
     if message.content.startswith('~info'):
         count = str(len(client.servers))
         await client.send_message(message.channel, "```Bot uptime: " + getUptime() + "``` ```python\nBot Developer: Nevexo\nBot version: " + version + "\nBot build: " + build + "\nServer count: " + count +"\nGithub: https://github.com/Nevexo/Wumpi```")
@@ -90,4 +108,6 @@ async def on_message(message):
             msg = await client.send_message(message.channel, ":clock1: - Processing image from assets server...")
             await client.edit_profile(avatar=logo.read())
             await client.edit_message(msg, ":white_check_mark: - Updated image!")
-client.run(token)
+def run():
+    client.run(token)
+run()
