@@ -1,5 +1,7 @@
 # Wumpi Discord Bot
 This is my kinda pointless Discord bot!
+So, while you might as well just add my instance of the bot. I guess you can run it if you must.
+Add my bot: https://discordapp.com/oauth2/authorize?client_id=233610976778256384&scope=bot&permissions=5
 
 # Getting setup.
 
@@ -52,3 +54,10 @@ On Windows, just run it.
 
 Rightio. Any problems submit them as issues, or ask in the Discord API Python, mention me, my name is: @Nevexo#3876.
 kthxbye.
+
+# Oh, one last thing. 
+If you want to change your bot user's logo, drop the logo into the same directory as main.py calling it 'logo.png' then just run 
+```
+~updateimage
+```
+You should get a lovely check mark.
