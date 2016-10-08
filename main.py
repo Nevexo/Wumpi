@@ -8,8 +8,8 @@ def admin(message):
         return True
     else:
         return False
-version = "0.2 Beta Flight"
-build = "15"
+version = "1.5"
+build = "20"
 token = ''
 client = discord.Client()
 print("Getting ready. GET DAT WUMPI")
@@ -31,6 +31,19 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name="github.com/nevexo kthx"))
 @client.event
 async def on_message(message):
+    """
+    if message.content.lower() == "rofl":
+        await client.send_message(message.channel, "Get up of the floor you dirty animal.")"""
+    if message.content.startswith("~join"):
+        await client.send_message(message.channel, ":smile: You can add me here: https://discordapp.com/oauth2/authorize?client_id=233610976778256384&scope=bot&permissions=0 I :heart: you.")
+    """if message.content.lower() == "lel":
+        await client.send_message(message.channel, "Don't say that. " + message.author.mention)
+    if message.content.lower() == "lol":
+        await client.send_message(message.channel, ":laughing: ")
+    if message.content.lower() == "how":
+        await client.send_message(message.channel, ":information_source: Confuseush?")
+    if message.content.lower() == "lmao":
+        await client.send_message(message.channel, "I hope it doesn't fall off.")"""
     if message.content.startswith("~duh"):
         await client.send_message(message.channel, ":poop: - Asian confuseush. ")
     if message.content.startswith("~die"):
