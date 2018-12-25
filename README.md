@@ -1,3 +1,8 @@
+# Project Canceled
+The Wumpi Discord bot nolonger runs in production, you can still download it and run it on your own server.
+
+R. Nev has replaced Wumpi, see it's S/C on GitLab; https://gitlab.com/Nevexo/Robonev
+
 # Wumpi Discord Bot
 This is my kinda pointless Discord bot!
 So, while you might as well just add my instance of the bot. I guess you can run it if you must.
